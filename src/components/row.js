@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { instance, img_api } from './axios';
 import { Link } from "react-router-dom";
-
+import './row.css';
 
 
 const Row = ({ title, handleAPI, setSearchTerm }) => {
