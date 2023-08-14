@@ -44,7 +44,7 @@ const Row = ({ title, handleAPI, setSearchTerm }) => {
                             <div
                             key={movie.id}
                             className="row__movie"
-                            onClick={() => setSearchTerm("")}
+                            // onClick={() => setSearchTerm("")}
                             >
                             <Link to={`/movie/${movie.id}`}>
                                 <img
