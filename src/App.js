@@ -11,44 +11,45 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <div>
-            <Suspense
-              fallback={
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100vh",
-                  }}
-                >
-                  <h1>Loading...</h1>
-                </div>
-              }
-            >
-              <Switch>
-                <Route
-                  path="/"
-                  exact
-                  render={(props) => (
-                    <MainPage
-                      {...props}
-                      setSearchTerm={setSearchTerm}
-                      searchTerm={searchTerm}
-                    />
-                  )}
-                />
+     
+          <div>
+              <Suspense
+                fallback={
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "100vh",
+                    }}
+                  >
+                    <h1>Loading...</h1>
+                  </div>
+                }
+              >
+                <Switch>
+                  <Route
+                    path="/"
+                    exact
+                    render={(props) => (
+                      <MainPage
+                        {...props}
+                        setSearchTerm={setSearchTerm}
+                        searchTerm={searchTerm}
+                      />
+                    )}
+                  />
 
-                <Route
-                  path="/search"
-                  render={(props) => (
-                    <SearchResults {...props} setSearchTerm={setSearchTerm} />
-                  )}
-                />
-                <Route path="/movie/:id" component={movieDetails} />
-              </Switch>
-            </Suspense>
-        </div>
+                  <Route
+                    path="/search"
+                    render={(props) => (
+                      <SearchResults {...props} setSearchTerm={setSearchTerm} />
+                    )}
+                  />
+                  <Route path="/movie/:id" component={movieDetails} />
+                </Switch>
+              </Suspense>
+          </div>
       </div>
   </BrowserRouter> 
   );
