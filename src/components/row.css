@@ -15,7 +15,8 @@
     margin-right: 2em;
     padding: 0.75em 0.5em;
     -ms-overflow-style: none; 
-    scrollbar-width: none; 
+    scrollbar-width: none;
+    scroll-behavior: smooth; 
 }
 
 .row__movie {

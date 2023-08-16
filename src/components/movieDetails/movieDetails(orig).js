@@ -6,10 +6,10 @@ import Similar from './Similar';
 import ModalVideo from "react-modal-video";
 
 function MovieDetails({match}) {
-    //TODO по умолчанию тип данных должен быть того формата, который ожидается от сервера или null
-    const [movie, setMovie] = useState(null);
-    const [credits, setCredits] = useState(null);
-    const [similar, setSimilar] = useState(null);
+    
+    const [movie, setMovie] = useState([]);
+    const [credits, setCredits] = useState([]);
+    const [similar, setSimilar] = useState([]);
 
     const [isOpen, setOpen] = useState(false);
     const [trailer, setTrailer] = useState([]);
@@ -21,10 +21,21 @@ function MovieDetails({match}) {
             .catch((err) => {
             console.log("MovieDetails Error", err.response);
             });
-        //TODO Одновременно переопределения большого количеств состояний нужно избегать. 
-        //Использую useReduce или разбивай как на примере movies.
-        setMovie(response.data);
-        setCredits(response.data.credits);
+
+            const refinedSimilarMovies = response.data.similar.results
+            .filter((movie) => {
+                return movie?.poster_path !== null || "" || undefined;
+            }).slice(0, 10);
+            
+            const finalTrailer = response.data.videos.results
+                .filter((movie) => {
+                    return movie?.type === "Trailer";
+                }).slice(0, 1);
+    
+          setMovie(response.data);
+          setCredits(response.data.credits);
+          setSimilar(refinedSimilarMovies);
+          setTrailer(finalTrailer);
 
           return response;
         };
@@ -32,25 +43,8 @@ function MovieDetails({match}) {
         fetchMovie();
     }, [match.params.id]);
 
-    useEffect(()=>{
-        if(movie){
-            const refinedSimilarMovies = movie.similar.results
-                .filter((movie) => {
-                    return movie?.poster_path !== null || "" || undefined;
-                }).slice(0, 10);
-
-                const finalTrailer = movie.videos.results
-                        .filter((movie) => {
-                            return movie?.type === "Trailer";
-                        }).slice(0, 1);
-
-                setSimilar(refinedSimilarMovies);
-                setTrailer(finalTrailer);
-        }
-    },[movie])
-
         // не дает выводить пустые масивы и как следвие ошибки
-    if (!movie || !credits || !similar ) return null;
+    if (!movie.genres || !credits.cast || !credits.crew) return null;
 
     return (
         <div className='movieDetails'>
@@ -73,7 +67,6 @@ function MovieDetails({match}) {
                                 .map((credit) => (
                                  <p
                                 className="movieDetails__director"
-                                //TODO Math nevere used insite KEY
                                 key={credit.id * Math.floor(Math.random() * 100)}
                                 >
                                 Directed by{" "}
@@ -133,7 +126,7 @@ function MovieDetails({match}) {
                     onClose={() => setOpen(false)}
                 />
                 ) : (
-                null
+                <div></div>
                 )}
             </div>
 
