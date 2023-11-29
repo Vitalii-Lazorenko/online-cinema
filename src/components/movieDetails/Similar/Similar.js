@@ -1,11 +1,12 @@
 import React from "react";
-import { img_api } from "../axios"
+import { img_api } from "../../Axios"
+import "./Similar.css";
 import { Link } from "react-router-dom";
 
 function Similar(similar) {
   return similar.similar.length !== 0 ? (
     <div className="movieDetails__similar">
-      <h2 className="movieDetails__similar__title">More Like This</h2>
+      <h2 className="movieDetails__similar__title">Більше подібного</h2>
       <div className="movieDetails__similar__profile">
         {similar.similar &&
           similar.similar.map((movie) => {

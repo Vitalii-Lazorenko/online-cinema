@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { instance, img_api } from '../axios';
-import Cast from './Casts';
-import Crew from './Crew';
-import Similar from './Similar';
+import { instance, img_api } from '../Axios';
+import Cast from './Casts/Casts';
+import Crew from './Crew/Crew';
+import Similar from './Similar/Similar';
 import ModalVideo from "react-modal-video";
+import "../../../node_modules/react-modal-video/css/modal-video.min.css";
+import './movieDetails.css';
 
 function MovieDetails({match}) {
     //TODO по умолчанию тип данных должен быть того формата, который ожидается от сервера или null
@@ -54,7 +56,15 @@ function MovieDetails({match}) {
 
     return (
         <div className='movieDetails'>
-            <div className='movieDetails_backdrop'>
+            <div className='movieDetails_backdrop'
+                style={{
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top center",
+                    backgroundSize: "cover",
+                    objectFit: "contain",
+                    backgroundImage: `linear-gradient(0deg, rgba(20,20,20,1) 0%, rgba(20,20,20,0.8071603641456583) 100%), url(${img_api.backdrop}${movie?.backdrop_path})`,
+                }}
+            >
                 <div className='movieDetails_main'>
                     <div className='movieDetails_info'>
                         <div>
@@ -73,10 +83,10 @@ function MovieDetails({match}) {
                                 .map((credit) => (
                                  <p
                                 className="movieDetails__director"
-                                //TODO Math nevere used insite KEY
+                                //
                                 key={credit.id * Math.floor(Math.random() * 100)}
                                 >
-                                Directed by{" "}
+                                Режисер{" "}
                                 <span className="movieDetails__director__span">
                                     {credit.original_name}
                                 </span>{" "}
@@ -110,7 +120,7 @@ function MovieDetails({match}) {
                                 className="trailer__button movieDetails__button"
                                 onClick={() => setOpen(true)}
                                 >
-                                Play Trailer
+                                Увімкнути трейлер
                                 </button>
                             </div>
                             <div>

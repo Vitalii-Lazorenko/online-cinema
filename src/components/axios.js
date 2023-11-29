@@ -1,10 +1,11 @@
 import Axios from 'axios';
 
-const api_key = 'd75fb7cf2c66add623cc560e3d88bfbd';
+// const api_key = 'd75fb7cf2c66add623cc560e3d88bfbd';
+const api_key = process.env.REACT_APP_api_key;
 
 const instance = Axios.create({
     baseURL: 'https://api.themoviedb.org/3',
-    params: { api_key: api_key, language: 'ru-RU' },
+    params: { api_key: api_key, language: 'uk-UK' },
 });
 
 const img_api = {

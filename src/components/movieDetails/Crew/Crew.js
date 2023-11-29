@@ -1,12 +1,12 @@
 import React from "react";
-import { img_api } from "../axios";
-import BackupImage from "./free-icon-avatar-147285.png";
+import { img_api } from "../../Axios";
+import BackupImage from "../free-icon-avatar-147285.png";
 
 function Crew(credits) {
 
   return credits.crew.length !== 0 ? (
     <div className="movieDetails__credits movieDetails__creditsCrew">
-      <h2 className="movieDetails__credits__title">Crew</h2>
+      <h2 className="movieDetails__credits__title">Знімальна група</h2>
       <div
         className="movieDetails__credits__profile"
       >

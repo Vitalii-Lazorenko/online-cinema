@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { instance, img_api } from './axios';
+import { instance, img_api } from '../Axios';
 import { Link } from "react-router-dom";
 import './row.css';
 
@@ -12,8 +12,8 @@ const Row = ({ title, handleAPI, setSearchTerm }) => {
             const response = await instance.get(handleAPI).catch((err) => {
                 console.log('Row Error', err.response);
             });
-
-            // проверка на наличие файлов изображенния и нарезка в 10 фильмов
+            // перевірка на наявність файлів зображеннчя і нарізка в 10 фільмів
+            // checking for image files and cutting into 10 movies
             const refinedMovies = response.data.results
             .filter((movie) => {
                 return movie?.poster_path !== null || "" || undefined;
@@ -48,10 +48,11 @@ const Row = ({ title, handleAPI, setSearchTerm }) => {
                             >
                             <Link to={`/movie/${movie.id}`}>
                                 <img
-                                src={img_api.poster + movie?.poster_path}
-                                alt={movie.title}
-                                className="row__poster"
-                                />
+                                    src={img_api.poster + movie?.poster_path}
+                                    alt={movie.title}
+                                    className="row__poster"
+                                    />
+                  
                             </Link>
                             </div>
                         );

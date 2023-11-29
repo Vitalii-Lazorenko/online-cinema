@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { img_api } from './axios';
+import { img_api } from './Axios';
+import "./SearchResults.css";
 
 const SearchResults = ({setSearchTerm}) => {
 
@@ -18,7 +19,7 @@ const SearchResults = ({setSearchTerm}) => {
        <>
       {movieSearchResults ? (
         <div className="searchResults">
-          <h2 className="searchResults__title">Movie List</h2>
+          <h2 className="searchResults__title">Список фільмів</h2>
           <div className="searchResults__div">
             {movieSearchResults
               .filter((movie) => {
@@ -44,7 +45,7 @@ const SearchResults = ({setSearchTerm}) => {
         <div className="no-results">
           <div className="no-results__text">
             <p>
-              По вашему запросу ничего ненайдено. <br /> Попробуйте использовать другие ключивіе слова.
+              На ваш запит нічого не знайдено. <br /> Спробуйте використати інші ключові слова.
             </p>
           </div>
         </div>
