@@ -13,8 +13,10 @@
     background-color: #141414;
   }
   
-  .fa-film,
-  .fa-film:link,
+  .fa-film{
+    background-image: url("./iconSeach.png");
+  }
+  .fa-film:link
   .fa-film:visited,
   .fa-film:active {
     color: #e5e5e5;
