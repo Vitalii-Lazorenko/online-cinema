@@ -77,7 +77,7 @@ function Nav({ searchTerm, setSearchTerm }) {
       <div className={`nav ${navbar && "nav__active"}`}>
         <div className="nav__icon" onClick={() => setSearchTerm("")}>
           <Link to="/" aria-label="logo icon">
-            <div class="logo"><img border="0" src="./pngwing.com(2).png" width="55" height="55" /></div>
+            <div class="logo"><img border="0" src="../cinema_icon_129443.png" width="55" height="55" /></div>
 
             <i className="fas fa-film"></i>
           </Link>
