@@ -137,7 +137,7 @@ function MovieDetails({match}) {
                 {trailer.length !== 0 ? (
                 <ModalVideo
                     channel="youtube"
-                    autoPlay="true"
+                    autoplay
                     isOpen={isOpen}
                     videoId={trailer[0].key}
                     onClose={() => setOpen(false)}

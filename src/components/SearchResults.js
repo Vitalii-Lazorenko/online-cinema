@@ -6,7 +6,7 @@ import "./SearchResults.css";
 const SearchResults = ({setSearchTerm}) => {
 
     const history = useHistory();
-    const movieSearchResults = history.location.row;
+    const movieSearchResults = history.location.movieRows;
 
     console.log(movieSearchResults);
 
